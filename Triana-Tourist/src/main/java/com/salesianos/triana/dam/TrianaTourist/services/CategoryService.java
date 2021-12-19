@@ -25,6 +25,10 @@ public class CategoryService {
     private final POIRepository poiRespository;
     private final ConverterCategory converterCategory;
 
+    public boolean comprobarNombre(String nombre){
+        return catRepository.existsByName(nombre);
+    }
+
     public List<POI> POITocategoria (String nombre){
         return poiRespository.categoriaToPOI(nombre);
     }

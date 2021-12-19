@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecificationExecutor<POI> {
 
@@ -18,6 +19,14 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
             """)
     String  nombreCategoriaPOI(@Param ("nombre") String nombre);
 
+    //Encontrar un POI por su nombre
+    @Query ("""
+            select p
+            from POI p 
+            where p.name = :nombre
+            """)
+    Optional<POI> findPOIToNombre(@Param ("nombre") String nombre);
+
     boolean existsByLocation(String ubicacion);
 
     //Traer  los puntos de interes que contengan el nombre de la categoria pasado
@@ -28,16 +37,16 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
             """)
     List<POI> categoriaToPOI(@Param ("nombre") String nombre);
 
-/*
+
     //Traer  los puntos de interes de una ruta por su nombre
     @Query ("""
             select s
             from Route r LEFT JOIN r.steps s
             where s.name = :nombres
             """)
-    List<POI>  findPOIToRoute(@Param ("nombres") List<String> nombres);
+    POI  findPOIToRoute(@Param ("nombres") String nombres);
 
- */
+
 
 
 }

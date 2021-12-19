@@ -56,6 +56,7 @@ public class RouteService {
     public Route editar (CreatedRouteDto editado, @PathVariable Long id){
         return repository.findById(id).map(e -> {
             e.setName(editado.getName());
+            //e.setSteps(poiRepository.findPOIToRoute(editado.getSteps()));
             e.setSteps(editado.getSteps());
             return  repository.save(e);
         }).orElseThrow(() -> new SingleNotFoundException(id.toString(), Route.class)

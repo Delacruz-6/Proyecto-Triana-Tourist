@@ -30,4 +30,5 @@ public class POI {
 
     private String coverPhoto,photo2,photo3;
 
+
 }
