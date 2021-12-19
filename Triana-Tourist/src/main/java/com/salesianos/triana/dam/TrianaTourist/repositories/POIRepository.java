@@ -11,6 +11,8 @@ import java.util.Optional;
 
 public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecificationExecutor<POI> {
 
+    boolean existsByName(String nombre);
+
     //Traer  el nombre de la categoria que tenga el POI
     @Query ("""
             select c.name
@@ -45,6 +47,8 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
             where s.name = :nombres
             """)
     POI  findPOIToRoute(@Param ("nombres") String nombres);
+
+
 
 
 

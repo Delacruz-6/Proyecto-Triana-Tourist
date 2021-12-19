@@ -11,9 +11,14 @@ import java.lang.annotation.*;
 @Constraint (validatedBy = UniqueValidator.class)
 @Documented
 public @interface UniquePoi {
-    String message() default "El nombre de la categoria ya existe";
+
+    String poi();
+
+    String message() default "El punto de interes ya existe";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
+
 }

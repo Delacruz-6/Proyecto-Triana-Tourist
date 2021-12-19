@@ -29,16 +29,23 @@ public class POIService {
 
     private final ConverterPOI converterPOI;
 
+    public boolean comprobarNombre(String nombre){
+        return repository.existsByName(nombre);
+    }
+
     public String nombreCategoria (String nombre){
+
         return repository.nombreCategoriaPOI(nombre);
     }
 
     public boolean comprobarUbicacion(String ubicacion){
+
         return repository.existsByLocation(ubicacion);
     }
 
 
     public List<POI> POITocategoria (String nombre){
+
         return repository.categoriaToPOI(nombre);
     }
 

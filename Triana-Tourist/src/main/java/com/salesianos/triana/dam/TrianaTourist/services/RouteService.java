@@ -29,6 +29,9 @@ public class RouteService {
     }
 
  */
+    public boolean comprobarPuntoDeInteres(POI poi){
+        return repository.existsBySteps(poi);
+    }
 
 
 
