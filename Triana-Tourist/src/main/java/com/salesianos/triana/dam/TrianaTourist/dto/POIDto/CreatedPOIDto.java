@@ -1,11 +1,10 @@
-package com.salesianos.triana.dam.TrianaTourist.dto;
+package com.salesianos.triana.dam.TrianaTourist.dto.POIDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.extern.java.Log;
-
 import javax.persistence.Lob;
+import java.util.Date;
 
 @Builder
 @Data
@@ -19,9 +18,10 @@ public class CreatedPOIDto {
     @Lob
     private String descripcion;
 
-    private Data fundacion;
+    private Date fundacion;
 
-    private String categoria;
+    @Builder.Default
+    private String nombreCategoria = "Sin categoria";
 
     private String coverPhoto;
 
@@ -30,3 +30,4 @@ public class CreatedPOIDto {
     private String photo2;
 
 }
+

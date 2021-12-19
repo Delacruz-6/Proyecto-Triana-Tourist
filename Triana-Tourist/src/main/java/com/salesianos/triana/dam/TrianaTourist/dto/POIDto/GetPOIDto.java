@@ -1,14 +1,9 @@
-package com.salesianos.triana.dam.TrianaTourist.dto;
+package com.salesianos.triana.dam.TrianaTourist.dto.POIDto;
 
-
-import com.salesianos.triana.dam.TrianaTourist.models.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Builder
@@ -17,12 +12,15 @@ import java.util.Date;
 public class GetPOIDto {
 
     private Long id;
-    
+
     private String name,location, description;
 
-    private Date date;
+    private Date fundacion;
 
     private String category;
 
     private String coverPhoto;
+
+    private String photo2, photo3;
 }
+
