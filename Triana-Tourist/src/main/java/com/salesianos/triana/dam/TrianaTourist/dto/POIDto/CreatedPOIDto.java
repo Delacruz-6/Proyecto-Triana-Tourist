@@ -1,7 +1,7 @@
 package com.salesianos.triana.dam.TrianaTourist.dto.POIDto;
 
 import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.ExitCategory;
-import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.UniqueLocationPOI;
+import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.UniqueNamePOI;
 import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.UniquePhoto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,10 +21,10 @@ import java.util.Date;
 @UniquePhoto (fotoPrincipal = "coverPhoto", foto2 = "photo2", foto3 = "photo3", message = "Las fotos deben ser diferentes")
 public class CreatedPOIDto {
 
+    @UniqueNamePOI( message = "{poi.name.unique}")
     @NotBlank( message = "{poi.name.notBlank}")
     private String nombre;
 
-    @UniqueLocationPOI ( message = "{poi.location.unique}")
     @Pattern (regexp = "^([-+]?\\d{1,2}[.]\\d+),\\s*([-+]?\\d{1,3}[.]\\d+)$", message = "{poi.location.ex}")
     private String location;
 

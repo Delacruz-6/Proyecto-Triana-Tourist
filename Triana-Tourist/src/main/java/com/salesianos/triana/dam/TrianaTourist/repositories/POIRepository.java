@@ -21,13 +21,7 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
             """)
     String  nombreCategoriaPOI(@Param ("nombre") String nombre);
 
-    //Encontrar un POI por su nombre
-    @Query ("""
-            select p
-            from POI p
-            where p.name = :nombre
-            """)
-    Optional<POI> findPOIToNombre(@Param ("nombre") String nombre);
+
 
     boolean existsByLocation(String ubicacion);
 
@@ -40,13 +34,6 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
     List<POI> categoriaToPOI(@Param ("nombre") String nombre);
 
 
-    //Traer  los puntos de interes de una ruta por su nombre
-    @Query ("""
-            select s
-            from Route r LEFT JOIN r.steps s
-            where s.name = :nombres
-            """)
-    POI  findPOIToRoute(@Param ("nombres") String nombres);
 
     //Traer  El POI pasandole el nombre
     @Query ("""
@@ -55,6 +42,8 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
             where p.name = :nombre
             """)
     POI  findPOIToName(@Param ("nombre") String nombre);
+
+
 
 
 

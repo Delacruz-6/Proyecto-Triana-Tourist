@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,29 +25,21 @@ public class POIService {
 
     private final POIRepository repository;
 
-    private final CategoryRepository categoryRepository;
 
+    private final CategoryService categoryService;
     private final ConverterPOI converterPOI;
 
-    public boolean comprobarNombre(String nombre){
-        return repository.existsByName(nombre);
-    }
 
-    public String nombreCategoria (String nombre){
-
-        return repository.nombreCategoriaPOI(nombre);
-    }
-
-    public boolean comprobarUbicacion(String ubicacion){
-
-        return repository.existsByLocation(ubicacion);
+    public POI findPOIToNombre(String nombre ){
+        return  repository.findPOIToName(nombre);
     }
 
 
-    public List<POI> POITocategoria (String nombre){
+    public boolean comprobarNombre(String ubicacion){
 
-        return repository.categoriaToPOI(nombre);
+        return repository.existsByName(ubicacion);
     }
+
 
     public List<GetPOIDto> findAll(){
         List<POI> data = repository.findAll();
@@ -76,8 +69,7 @@ public class POIService {
                 .photo3(c.getPhoto3())
                 .build();
         if(c.getIdCategoria() != null){
-            Category cat = categoryRepository.findById(c.getIdCategoria())
-                    .orElseThrow(() -> new SingleNotFoundException(c.getIdCategoria().toString(), POI.class));
+            Category cat = categoryService.findById(c.getIdCategoria());
             poi.setCategory(cat);
         }
 
@@ -97,8 +89,7 @@ public class POIService {
         }).orElseThrow(() -> new SingleNotFoundException(id.toString(), POI.class)
         );
         if(editado.getIdCategoria() != null){
-            Category cat = categoryRepository.findById(editado.getIdCategoria())
-                    .orElseThrow(() -> new SingleNotFoundException(editado.getIdCategoria().toString(), POI.class));
+            Category cat = categoryService.findById(editado.getIdCategoria());
             result.setCategory(cat);
             repository.save(result);
         }

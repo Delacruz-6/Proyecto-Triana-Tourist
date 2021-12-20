@@ -20,26 +20,10 @@ public class ConveterRoute {
     private final ConverterPOI converterPOI;
 
     public Route createdRoute (CreatedRouteDto c){
-
-        Route result = Route.builder()
+        return Route.builder()
                 .name(c.getNombre())
                 .steps(c.getSteps())
                 .build();
-        /*
-        result.setSteps(poiRepository.findPOIToRoute(c.getSteps().stream().map(poi -> {
-            poi.
-        }).collect(Collectors.toList())));
-
-        if(poiRepository.findPOIToNombre(c.getSteps()).isPresent()){
-            result.setSteps(poiRepository.findPOIToRoute(c.getSteps()));
-        }
-        result.for
-
-        List<POI> listaPoi = poiRepository.findAll();
-        listaPoi.forEach( );
-
-         */
-        return result;
     }
 
     public GetRouteDto getRouteDto (Route r){

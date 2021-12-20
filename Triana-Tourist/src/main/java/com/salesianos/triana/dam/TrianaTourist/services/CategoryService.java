@@ -33,21 +33,6 @@ public class CategoryService {
     }
 
 
-
-    public List<POI> POITocategoria (String nombre){
-        comprobarCategoria(nombre);
-        return poiRespository.categoriaToPOI(nombre);
-    }
-
-    public Category categoriaToNombre (String nombre){
-        return catRepository.findByNameContains(nombre);
-    }
-
-    public Optional<Category> findCategoriaToPoi (String nombre){
-        comprobarCategoria(nombre);
-        return catRepository.findCategoriaPOIToNombre(nombre);
-    }
-
     public List<GetCategoryDto> findAll(){
         List<Category> data = catRepository.findAll();
 
@@ -88,18 +73,6 @@ public class CategoryService {
         });
         catRepository.delete(categoria);
     }
-
-
-    public void comprobarCategoria (String nombre){
-        Optional <Category> category= catRepository.findCategoriaPOIToNombre(nombre);
-        category.orElseThrow(() -> new SingleNotFoundException("Nulo", Category.class));
-    }
-
-
-
-
-
-
 
 
 }

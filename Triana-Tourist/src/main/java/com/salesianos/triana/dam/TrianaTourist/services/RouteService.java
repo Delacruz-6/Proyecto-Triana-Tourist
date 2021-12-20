@@ -22,14 +22,9 @@ import java.util.stream.Collectors;
 public class RouteService {
 
     private final RouteRepository repository;
-    private final POIRepository poiRepository;
     private final ConveterRoute conveterRoute;
-/*
-    public List<POI> findPOIToRutas(List<String> nombres){
-        return poiRepository.findPOIToRoute(nombres);
-    }
+    private final POIService poiService;
 
- */
     public boolean comprobarNombre(String nombre){
         return repository.existsByName(nombre);
     }
@@ -61,7 +56,7 @@ public class RouteService {
         Route ruta = repository.findById(id)
                 .orElseThrow(() -> new SingleNotFoundException(id.toString(), Route.class));
 
-        POI creado= poiRepository.findPOIToName(dto.getNombrePOI());
+        POI creado= poiService.findPOIToNombre(dto.getNombrePOI());
 
         if(creado == null)
             throw new SingleNotFoundException("Nulo", POI.class);
@@ -92,12 +87,11 @@ public class RouteService {
         Route route = repository.findById(id1)
                 .orElseThrow(() -> new SingleNotFoundException(id1.toString(), Route.class));
 
-        POI poi = poiRepository.findById(id2)
-                .orElseThrow(() -> new SingleNotFoundException(id2.toString(), POI.class));
+        POI poi = poiService.findById(id2);
+
 
         route.getSteps().forEach(POI ->{
-            poiRepository.findById(id2)
-                    .orElseThrow(() -> new SingleNotFoundException(id2.toString(), POI.class));
+            poiService.findById(id2);
         });
         route.getSteps().remove(poi);
         repository.save(route);

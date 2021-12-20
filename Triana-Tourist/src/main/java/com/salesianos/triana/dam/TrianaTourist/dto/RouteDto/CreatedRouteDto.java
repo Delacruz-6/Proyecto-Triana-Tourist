@@ -21,12 +21,7 @@ public class CreatedRouteDto {
     @UniqueName (message = "{route.name.uniqueName}")
     private String nombre;
 
-    /*
-    @Builder.Default
-    private List<String> steps= new ArrayList<>();
-     */
-    //No puede estar repetido
-    //@UniquePoi (poi = "steps", message = "{route.steps.unique}")
+
     @Builder.Default
     private List<POI> steps= new ArrayList<>();
 }

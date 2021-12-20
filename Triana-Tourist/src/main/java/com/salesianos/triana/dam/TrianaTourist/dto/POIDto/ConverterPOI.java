@@ -7,19 +7,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ConverterPOI {
 
-    public POI createdPOI (CreatedPOIDto c){
-        POI result = POI.builder()
-                .name(c.getNombre())
-                .location(c.getLocation())
-                .date(c.getFundacion())
-                .coverPhoto(c.getCoverPhoto())
-                .description(c.getDescripcion())
-                .photo2(c.getPhoto2())
-                .photo3(c.getPhoto3())
-                .build();
 
-        return result;
-    }
 
     public GetPOIDto getPOIDto (POI p){
         GetPOIDto result =  GetPOIDto.builder()

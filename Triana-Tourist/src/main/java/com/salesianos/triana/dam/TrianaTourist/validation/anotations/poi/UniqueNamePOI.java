@@ -1,6 +1,6 @@
 package com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi;
 
-import com.salesianos.triana.dam.TrianaTourist.validation.validators.poi.UniqueLocationPOIValidator;
+import com.salesianos.triana.dam.TrianaTourist.validation.validators.poi.UniqueNamePOIValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,9 +9,9 @@ import java.lang.annotation.*;
 
 @Target ({ElementType.METHOD, ElementType.FIELD})
 @Retention (RetentionPolicy.RUNTIME)
-@Constraint (validatedBy = UniqueLocationPOIValidator.class)
+@Constraint (validatedBy = UniqueNamePOIValidator.class)
 @Documented
-public @interface UniqueLocationPOI {
+public @interface UniqueNamePOI {
 
     String message() default "El nombre del punto de ineteres ya existe";
 

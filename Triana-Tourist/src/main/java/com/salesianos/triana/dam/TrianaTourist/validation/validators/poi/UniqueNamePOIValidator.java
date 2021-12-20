@@ -1,7 +1,7 @@
 package com.salesianos.triana.dam.TrianaTourist.validation.validators.poi;
 
 import com.salesianos.triana.dam.TrianaTourist.services.POIService;
-import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.UniqueLocationPOI;
+import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.UniqueNamePOI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -9,16 +9,16 @@ import org.springframework.util.StringUtils;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 @RequiredArgsConstructor
-public class UniqueLocationPOIValidator implements ConstraintValidator<UniqueLocationPOI, String> {
+public class UniqueNamePOIValidator implements ConstraintValidator<UniqueNamePOI, String> {
 
     @Autowired
     private final POIService servicio;
 
     @Override
-    public void initialize(UniqueLocationPOI constraintAnnotation) { }
+    public void initialize(UniqueNamePOI constraintAnnotation) { }
 
     @Override
-    public boolean isValid(String ubicacion, ConstraintValidatorContext context) {
-        return StringUtils.hasText(ubicacion) && !servicio.comprobarUbicacion(ubicacion);
+    public boolean isValid(String nombre, ConstraintValidatorContext context) {
+        return StringUtils.hasText(nombre) && !servicio.comprobarNombre(nombre);
     }
 }
