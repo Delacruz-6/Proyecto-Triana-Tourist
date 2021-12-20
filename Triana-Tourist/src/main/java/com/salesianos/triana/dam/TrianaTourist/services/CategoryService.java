@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class CategoryService {
 
     private final CategoryRepository catRepository;
-    private final POIRepository poiRespository;
+    private final POIRepository poiRepository;
     private final ConverterCategory converterCategory;
 
     public boolean comprobarId(Long id){
@@ -39,6 +39,7 @@ public class CategoryService {
         if(data.isEmpty()){
             throw new ListNotFoundException(Category.class);
         }else {
+
             return data.stream()
                     .map(converterCategory::getCategoryDto)
                     .collect(Collectors.toList());
@@ -65,11 +66,11 @@ public class CategoryService {
     public void  delete (@PathVariable Long id){
         Category categoria = catRepository.findById(id)
                 .orElseThrow(() -> new SingleNotFoundException(id.toString(), Category.class));
-        List<POI> puntoDeinteres = poiRespository.findCategoryPOI(id);
+        List<POI> puntoDeinteres = poiRepository.findCategoryPOI(id);
 
         puntoDeinteres.forEach( p ->{
             p.setCategory(null);
-            poiRespository.save(p);
+            poiRepository.save(p);
         });
         catRepository.delete(categoria);
     }

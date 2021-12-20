@@ -12,16 +12,16 @@ public interface RouteRepository extends JpaRepository<Route, Long>, JpaSpecific
     boolean existsByName(String nombre);
 
     @Query (value = """
-            select p.name
+            select p.id
             from POI p  LEFT JOIN  ROUTE ro
             where p.name IN
             (
             SELECT p.name
             from RUTASPOI r
-            WHERE (p.id = r.POI_ID) AND (p.name = :nombre)
+            WHERE (p.id = r.POI_ID) AND (p.id = :id)
             )
             """, nativeQuery = true)
-    String comprobarPOI(@Param ("nombre") String nombre);
+    Long comprobarPOI(@Param ("id") Long id);
 
 
 }

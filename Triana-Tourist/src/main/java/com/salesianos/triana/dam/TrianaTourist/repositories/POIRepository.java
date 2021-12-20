@@ -13,43 +13,11 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
 
     boolean existsByName(String nombre);
 
-    //Traer  el nombre de la categoria que tenga el POI
-    @Query ("""
-            select c.name
-            from POI p LEFT JOIN p.category c
-            where c.name = :nombre
-            """)
-    String  nombreCategoriaPOI(@Param ("nombre") String nombre);
-
-
-
-    boolean existsByLocation(String ubicacion);
-
-    //Traer  los puntos de interes que contengan el nombre de la categoria pasado
-    @Query ("""
-            select p
-            from POI p LEFT JOIN p.category c
-            where c.name = :nombre
-            """)
-    List<POI> categoriaToPOI(@Param ("nombre") String nombre);
-
-
-
-    //Traer  El POI pasandole el nombre
-    @Query ("""
-            select p
-            from POI p
-            where p.name = :nombre
-            """)
-    POI  findPOIToName(@Param ("nombre") String nombre);
-
-
-
-
-
 
     @Query(value = """
-            SELECT * FROM POI WHERE CATEGORIA = :id
+            SELECT p.name
+            FROM  POI p LEFT JOIN p.CATEGORIA c
+            WHERE c.id = :id
             """, nativeQuery = true)
     List<POI> findCategoryPOI(@Param("id") Long id);
 

@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 @RequiredArgsConstructor
-public class UniquePoiValidator implements ConstraintValidator<UniquePoi, String> {
+public class UniquePoiValidator implements ConstraintValidator<UniquePoi, Long> {
 
 
     private final RouteRepository repository;
@@ -18,9 +18,9 @@ public class UniquePoiValidator implements ConstraintValidator<UniquePoi, String
 
 
     @Override
-    public boolean isValid(String nombre, ConstraintValidatorContext context) {
+    public boolean isValid(Long id, ConstraintValidatorContext context) {
 
-        return repository.comprobarPOI(nombre) == null;
+        return repository.comprobarPOI(id)== null;
     }
 
 

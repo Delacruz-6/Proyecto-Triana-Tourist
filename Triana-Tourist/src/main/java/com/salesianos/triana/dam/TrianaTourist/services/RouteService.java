@@ -56,7 +56,7 @@ public class RouteService {
         Route ruta = repository.findById(id)
                 .orElseThrow(() -> new SingleNotFoundException(id.toString(), Route.class));
 
-        POI creado= poiService.findPOIToNombre(dto.getNombrePOI());
+        POI creado= poiService.findById(dto.getIdPoi());
 
         if(creado == null)
             throw new SingleNotFoundException("Nulo", POI.class);
@@ -70,7 +70,6 @@ public class RouteService {
     public Route editar (CreatedRouteDto editado, @PathVariable Long id){
         return repository.findById(id).map(e -> {
             e.setName(editado.getNombre());
-            //e.setSteps(poiRepository.findPOIToRoute(editado.getSteps()));
             e.setSteps(editado.getSteps());
             return  repository.save(e);
         }).orElseThrow(() -> new SingleNotFoundException(id.toString(), Route.class)
@@ -88,7 +87,6 @@ public class RouteService {
                 .orElseThrow(() -> new SingleNotFoundException(id1.toString(), Route.class));
 
         POI poi = poiService.findById(id2);
-
 
         route.getSteps().forEach(POI ->{
             poiService.findById(id2);

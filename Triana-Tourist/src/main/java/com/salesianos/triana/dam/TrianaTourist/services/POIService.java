@@ -30,11 +30,6 @@ public class POIService {
     private final ConverterPOI converterPOI;
 
 
-    public POI findPOIToNombre(String nombre ){
-        return  repository.findPOIToName(nombre);
-    }
-
-
     public boolean comprobarNombre(String ubicacion){
 
         return repository.existsByName(ubicacion);

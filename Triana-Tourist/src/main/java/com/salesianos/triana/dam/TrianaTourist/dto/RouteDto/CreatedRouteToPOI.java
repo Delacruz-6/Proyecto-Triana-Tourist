@@ -15,6 +15,5 @@ import javax.validation.constraints.NotBlank;
 public class CreatedRouteToPOI {
 
     @UniquePoi ( message = "{route.steps.unique}")
-    @NotBlank ( message = "{poi.name.notBlank}")
-    private String nombrePOI;
+    private Long idPoi;
 }

@@ -27,11 +27,10 @@ public class PhotoValidator implements ConstraintValidator<UniquePhoto, Object> 
         String foto2v = (String) PropertyAccessorFactory.forBeanPropertyAccess(value).getPropertyValue(foto2);
         String foto3v = (String) PropertyAccessorFactory.forBeanPropertyAccess(value).getPropertyValue(foto3);
 
-        if (!foto2v.isEmpty()){
-            return StringUtils.hasText(foto1) &&  !foto1.contentEquals(foto2v);
-        }else if(!foto3v.isEmpty()){
-            return StringUtils.hasText(foto1) && !foto1.contentEquals(foto3v) ;
+        if (!foto1.isEmpty() ){
+            return !foto1.contentEquals(foto2v)  && !foto1.contentEquals(foto3v) && !foto2v.contentEquals(foto3v);
         }
-        return StringUtils.hasText(foto1);
+        return false;
+
     }
 }

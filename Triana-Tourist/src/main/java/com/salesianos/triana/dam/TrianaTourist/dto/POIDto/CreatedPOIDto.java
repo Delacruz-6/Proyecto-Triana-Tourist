@@ -40,6 +40,7 @@ public class CreatedPOIDto {
     @URL(message = "{poi.coverPhoto.url}")
     @NotNull(message = "{poi.coverPhoto.notNull}")
     private String coverPhoto;
+
     @URL(message = "{poi.photo3.url}")
     private String photo3;
     @URL(message = "{poi.photo2.url}")
