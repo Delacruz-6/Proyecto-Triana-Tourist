@@ -25,7 +25,6 @@ public class POIService {
     private final POIRepository repository;
 
     private final CategoryRepository categoryRepository;
-    //private final CategoryService categoryService;
 
     private final ConverterPOI converterPOI;
 
@@ -66,13 +65,26 @@ public class POIService {
                 .orElseThrow(() -> new SingleNotFoundException(id.toString(), POI.class));
     }
 
-    public POI save (CreatedPOIDto poiDto){
-        return  repository.save(converterPOI.createdPOI(poiDto));
+    public POI save (CreatedPOIDto c){
+        POI poi = POI.builder()
+                .name(c.getNombre())
+                .location(c.getLocation())
+                .date(c.getFundacion())
+                .coverPhoto(c.getCoverPhoto())
+                .description(c.getDescripcion())
+                .photo2(c.getPhoto2())
+                .photo3(c.getPhoto3())
+                .build();
+        if(c.getIdCategoria() != null){
+            Category cat = categoryRepository.findById(c.getIdCategoria())
+                    .orElseThrow(() -> new SingleNotFoundException(c.getIdCategoria().toString(), POI.class));
+            poi.setCategory(cat);
+        }
+
+        return  repository.save(poi);
     }
 
     public POI editar (CreatedPOIDto editado, @PathVariable Long id){
-        Category categoria;
-
         POI result = repository.findById(id).map(e -> {
             e.setName(editado.getNombre());
             e.setDescription(editado.getDescripcion());
@@ -84,9 +96,11 @@ public class POIService {
             return  repository.save(e);
         }).orElseThrow(() -> new SingleNotFoundException(id.toString(), POI.class)
         );
-        if (categoryRepository.findCategoriaPOIToNombre(editado.getNombreCategoria()).isPresent()){
-            categoria= categoryRepository.findByNameContains(editado.getNombreCategoria());
-            result.setCategory(categoria);
+        if(editado.getIdCategoria() != null){
+            Category cat = categoryRepository.findById(editado.getIdCategoria())
+                    .orElseThrow(() -> new SingleNotFoundException(editado.getIdCategoria().toString(), POI.class));
+            result.setCategory(cat);
+            repository.save(result);
         }
 
         return result;

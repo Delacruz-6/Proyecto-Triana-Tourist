@@ -35,8 +35,7 @@ public class CreatedPOIDto {
     private Date fundacion;
 
     @ExitCategory (message = "{poi.nameCat.exitName}")
-    @Builder.Default
-    private String nombreCategoria = "Sin categoria";
+    private Long idCategoria;
 
     @URL(message = "{poi.coverPhoto.url}")
     @NotNull(message = "{poi.coverPhoto.notNull}")

@@ -22,7 +22,10 @@ public interface CategoryRepository extends JpaRepository<Category, Long> , JpaS
     Category findByNameContains(@Param("nombre") String nombre);
 
 
+
     boolean existsByName(String nombre);
+
+    boolean existsById(Long id);
 
 
 

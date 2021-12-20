@@ -11,7 +11,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 @RequiredArgsConstructor
-public class ExitCategoryValidator implements ConstraintValidator<ExitCategory, String> {
+public class ExitCategoryValidator implements ConstraintValidator<ExitCategory, Long> {
 
     @Autowired
     private final CategoryService servicio;
@@ -20,7 +20,8 @@ public class ExitCategoryValidator implements ConstraintValidator<ExitCategory, 
     public void initialize(ExitCategory constraintAnnotation) { }
 
     @Override
-    public boolean isValid(String nombre, ConstraintValidatorContext context) {
-        return StringUtils.hasText(nombre) && servicio.comprobarNombre(nombre);
+    public boolean isValid(Long id, ConstraintValidatorContext context) {
+             return servicio.comprobarId(id) && id!= null;
+
     }
 }

@@ -30,16 +30,4 @@ public class Route {
     private List<POI> steps= new ArrayList<>();
 
 
-    public List<String> showToPOIToRoute(){
-        return steps.stream().map(POI::getName).collect(Collectors.toList());
-    }
-/*
-    public List<String> addToPOIToRoute(List <String> nombres){
-        return steps.stream().map(showToPOIToRoute().forEach(poi -> poi.add)
-        }).collect(Collectors.toList());
-    }
- */
-
-
-
 }

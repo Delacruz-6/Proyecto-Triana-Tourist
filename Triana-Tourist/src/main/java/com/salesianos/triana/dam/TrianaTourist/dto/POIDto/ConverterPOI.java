@@ -1,19 +1,11 @@
 package com.salesianos.triana.dam.TrianaTourist.dto.POIDto;
-import com.salesianos.triana.dam.TrianaTourist.dto.CategoryDto.CreatedCategoryDto;
-import com.salesianos.triana.dam.TrianaTourist.models.Category;
 import com.salesianos.triana.dam.TrianaTourist.models.POI;
-import com.salesianos.triana.dam.TrianaTourist.repositories.CategoryRepository;
-import com.salesianos.triana.dam.TrianaTourist.repositories.POIRepository;
-import com.salesianos.triana.dam.TrianaTourist.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class ConverterPOI {
-
-    private final CategoryService categoryService;
-    private final POIRepository repository;
 
     public POI createdPOI (CreatedPOIDto c){
         POI result = POI.builder()
@@ -24,7 +16,6 @@ public class ConverterPOI {
                 .description(c.getDescripcion())
                 .photo2(c.getPhoto2())
                 .photo3(c.getPhoto3())
-                .category(categoryService.categoriaToNombre(c.getNombreCategoria()))
                 .build();
 
         return result;
@@ -38,11 +29,10 @@ public class ConverterPOI {
                 .fundacion(p.getDate())
                 .coverPhoto(p.getCoverPhoto())
                 .description(p.getDescription())
-                .category(repository.nombreCategoriaPOI(p.getCategory().getName()))
+                .category(p.getCategory()==null?null:p.getCategory().getId())
                 .photo2(p.getPhoto2())
                 .photo3(p.getPhoto3())
                 .build();
-
         return result;
     }
 }

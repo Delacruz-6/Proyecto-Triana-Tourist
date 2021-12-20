@@ -10,8 +10,7 @@ import javax.validation.ConstraintValidatorContext;
 @RequiredArgsConstructor
 public class UniquePoiValidator implements ConstraintValidator<UniquePoi, String> {
 
-    //private final POIRepository poiRepository;
-    //private final RouteService routeService;
+
     private final RouteRepository repository;
 
     @Override

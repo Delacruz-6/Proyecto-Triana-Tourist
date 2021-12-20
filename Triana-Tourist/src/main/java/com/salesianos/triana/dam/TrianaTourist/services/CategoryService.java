@@ -25,9 +25,14 @@ public class CategoryService {
     private final POIRepository poiRespository;
     private final ConverterCategory converterCategory;
 
-    public boolean comprobarNombre(String nombre){
-        return catRepository.existsByName(nombre);
+    public boolean comprobarId(Long id){
+        return catRepository.existsById(id);
     }
+    public boolean comprobarNombre(String name){
+        return catRepository.existsByName(name);
+    }
+
+
 
     public List<POI> POITocategoria (String nombre){
         comprobarCategoria(nombre);

@@ -11,22 +11,6 @@ public interface RouteRepository extends JpaRepository<Route, Long>, JpaSpecific
 
     boolean existsByName(String nombre);
 
-    //Comprobar si un punto de interes esta ya en una ruta
-    /* PRUEBA 1
-    @Query ("""
-            select p.name
-            from route r LEFT JOIN r.steps p
-            where p.name IN
-            (
-            SELECT p.name
-            from POI a
-            WHERE p.id = a.id
-            AND
-
-            )
-            """)
-
-     */
     @Query (value = """
             select p.name
             from POI p  LEFT JOIN  ROUTE ro

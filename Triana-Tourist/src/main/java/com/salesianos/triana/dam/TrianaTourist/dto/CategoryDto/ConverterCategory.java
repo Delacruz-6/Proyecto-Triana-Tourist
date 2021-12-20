@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class ConverterCategory {
-
-    private final CategoryRepository categoryRepository;
-    //private final POIService poiService;
+    
     private final POIRepository poiRepository;
 
     public Category createdCategory (CreatedCategoryDto c){
@@ -24,7 +22,7 @@ public class ConverterCategory {
         return GetCategoryDto.builder()
                 .id(c.getId())
                 .name(c.getName())
-                //.puntosInteres(categoryRepository.findCategoriaPOIToNombre(c.getName()))
+                .puntosInteres(poiRepository.findCategoryPOI(c.getId()))
                 .build();
     }
 

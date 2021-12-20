@@ -43,10 +43,6 @@ public class RouteController {
 
         return servicio.save(route);
     }
-    @PostMapping("/{id}/poi")
-    public GetRouteDto addPOItoRoute (@Valid @RequestBody CreatedRouteToPOI poiToRoute, @PathVariable Long id){
-        return servicio.addPoiToRoute(poiToRoute,id);
-    }
 
     @PutMapping ("/{id}")
     public Route editar (@Valid  @RequestBody CreatedRouteDto routeDto , @PathVariable Long id){
@@ -64,6 +60,10 @@ public class RouteController {
     ResponseEntity<?> deletePOIToRoute (@PathVariable Long id1, @PathVariable Long id2){
         servicio.deletePOIToRoute(id1,id2);
         return ResponseEntity.noContent().build();
-
     }
+    @PostMapping("/{id}/poi")
+    public GetRouteDto addPOItoRoute (@Valid @RequestBody CreatedRouteToPOI poiToRoute, @PathVariable Long id){
+        return servicio.addPoiToRoute(poiToRoute,id);
+    }
+
 }

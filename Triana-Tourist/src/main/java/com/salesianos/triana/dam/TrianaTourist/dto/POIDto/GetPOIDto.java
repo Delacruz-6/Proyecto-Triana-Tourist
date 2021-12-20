@@ -17,7 +17,7 @@ public class GetPOIDto {
 
     private Date fundacion;
 
-    private String category;
+    private Long category;
 
     private String coverPhoto;
 
