@@ -59,6 +59,14 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
 
 
 
+    @Query(value = """
+            SELECT * FROM POI WHERE CATEGORIA = :id
+            """, nativeQuery = true)
+    List<POI> findCategoryPOI(@Param("id") Long id);
+
+
+
+
 
 
 }

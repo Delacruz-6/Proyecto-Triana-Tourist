@@ -24,4 +24,9 @@ public interface CategoryRepository extends JpaRepository<Category, Long> , JpaS
 
     boolean existsByName(String nombre);
 
+
+
+
+
+
 }

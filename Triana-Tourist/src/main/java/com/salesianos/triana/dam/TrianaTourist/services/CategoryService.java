@@ -75,6 +75,12 @@ public class CategoryService {
     public void  delete (@PathVariable Long id){
         Category categoria = catRepository.findById(id)
                 .orElseThrow(() -> new SingleNotFoundException(id.toString(), Category.class));
+        List<POI> puntoDeinteres = poiRespository.findCategoryPOI(id);
+
+        puntoDeinteres.forEach( p ->{
+            p.setCategory(null);
+            poiRespository.save(p);
+        });
         catRepository.delete(categoria);
     }
 
