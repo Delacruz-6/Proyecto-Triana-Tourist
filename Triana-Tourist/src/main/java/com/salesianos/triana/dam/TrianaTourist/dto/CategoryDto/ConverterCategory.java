@@ -15,7 +15,7 @@ public class ConverterCategory {
 
     public Category createdCategory (CreatedCategoryDto c){
         return Category.builder()
-                .name(c.getName())
+                .name(c.getNombre())
                 .build();
 
     }

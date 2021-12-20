@@ -24,14 +24,9 @@ public class ConverterPOI {
                 .description(c.getDescripcion())
                 .photo2(c.getPhoto2())
                 .photo3(c.getPhoto3())
+                .category(categoryService.categoriaToNombre(c.getNombreCategoria()))
                 .build();
 
-        if (categoryService.findCategoriaToPoi(c.getNombreCategoria()).isPresent()){
-            result.setCategory(categoryService.categoriaToNombre(c.getNombreCategoria()));
-        }else{
-            Category nuevaCategoria = categoryService.save(CreatedCategoryDto.builder().name(c.getNombreCategoria()).build());
-            result.setCategory(nuevaCategoria);
-        }
         return result;
     }
 

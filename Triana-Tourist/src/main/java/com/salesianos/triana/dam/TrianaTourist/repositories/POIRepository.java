@@ -24,7 +24,7 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
     //Encontrar un POI por su nombre
     @Query ("""
             select p
-            from POI p 
+            from POI p
             where p.name = :nombre
             """)
     Optional<POI> findPOIToNombre(@Param ("nombre") String nombre);
@@ -47,6 +47,14 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
             where s.name = :nombres
             """)
     POI  findPOIToRoute(@Param ("nombres") String nombres);
+
+    //Traer  El POI pasandole el nombre
+    @Query ("""
+            select p
+            from POI p
+            where p.name = :nombre
+            """)
+    POI  findPOIToName(@Param ("nombre") String nombre);
 
 
 

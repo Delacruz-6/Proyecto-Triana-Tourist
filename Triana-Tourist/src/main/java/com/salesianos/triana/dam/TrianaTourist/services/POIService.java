@@ -72,15 +72,10 @@ public class POIService {
 
     public POI editar (CreatedPOIDto editado, @PathVariable Long id){
         Category categoria;
-        if (categoryRepository.findCategoriaPOIToNombre(editado.getNombreCategoria()).isPresent()){
-            categoria= categoryRepository.findByNameContains(editado.getNombreCategoria());
-        }else{
-            //categoria = categoryRepository.save(CreatedCategoryDto.builder().name(editado.getNombreCategoria()).build());
-        }
-        return repository.findById(id).map(e -> {
+
+        POI result = repository.findById(id).map(e -> {
             e.setName(editado.getNombre());
             e.setDescription(editado.getDescripcion());
-            //e.setCategory(categoria);
             e.setDate(editado.getFundacion());
             e.setLocation(editado.getLocation());
             e.setCoverPhoto(editado.getCoverPhoto());
@@ -89,6 +84,12 @@ public class POIService {
             return  repository.save(e);
         }).orElseThrow(() -> new SingleNotFoundException(id.toString(), POI.class)
         );
+        if (categoryRepository.findCategoriaPOIToNombre(editado.getNombreCategoria()).isPresent()){
+            categoria= categoryRepository.findByNameContains(editado.getNombreCategoria());
+            result.setCategory(categoria);
+        }
+
+        return result;
     }
 
     public void  delete (@PathVariable Long id){

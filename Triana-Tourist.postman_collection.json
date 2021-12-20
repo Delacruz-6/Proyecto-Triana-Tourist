@@ -64,6 +64,62 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Crear categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Historico\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categoria/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Hola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categoria/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -134,6 +190,34 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ruta del bacalao\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ruta/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ruta",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar ruta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"Ruta del bacalao\",\r\n    \"steps\": [\"Giralda\"]\r\n}",
 							"options": {
 								"raw": {
@@ -150,6 +234,57 @@
 							"path": [
 								"ruta",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir poi a ruta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombrePOI\": \"Giralda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ruta/1/poi/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ruta",
+								"1",
+								"poi",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar poi a ruta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ruta/1/poi/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ruta",
+								"1",
+								"poi",
+								"1"
 							]
 						}
 					},
@@ -252,7 +387,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Giralda\",\r\n    \"location\": \"37.3861826,-5.9948024\",\r\n    \"descripcion\": \"La giralda de Sevilla. La Giralda es la torre campanario de la Catedral. En su día fue la torre más alta del mundo con sus 97,5 m de altura, además de ser una de las imágenes más famosas de la ciudad y de toda Andalucía\",\r\n    \"fundacion\": \"1172-09-29\",\r\n    \"nombreCategoria\": \"Hisotry\",\r\n    \"coverPhoto\": \"https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/catedral-y-giralda-en-sevilla.jpg?itok=SrBFrb5Q\",\r\n    \"photo2\": \"https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/04/la-giralda-de-sevilla.jpg\",\r\n    \"photo3\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/La_Giralda_August_2012_Seville_Spain.jpg/240px-La_Giralda_August_2012_Seville_Spain.jpg\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Giraldillo\",\r\n    \"location\": \"37.3861826,-5.9948024\",\r\n    \"descripcion\": \"La giralda de Sevilla. La Giralda es la torre campanario de la Catedral. En su día fue la torre más alta del mundo con sus 97,5 m de altura, además de ser una de las imágenes más famosas de la ciudad y de toda Andalucía\",\r\n    \"fundacion\": \"1172-09-29\",\r\n    \"nombreCategoria\": \"Historico\",\r\n    \"coverPhoto\": \"https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/catedral-y-giralda-en-sevilla.jpg?itok=SrBFrb5Q\",\r\n    \"photo2\": \"https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/04/la-giralda-de-sevilla.jpg\",\r\n    \"photo3\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/La_Giralda_August_2012_Seville_Spain.jpg/240px-La_Giralda_August_2012_Seville_Spain.jpg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

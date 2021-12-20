@@ -2,6 +2,7 @@ package com.salesianos.triana.dam.TrianaTourist.services;
 
 import com.salesianos.triana.dam.TrianaTourist.dto.RouteDto.ConveterRoute;
 import com.salesianos.triana.dam.TrianaTourist.dto.RouteDto.CreatedRouteDto;
+import com.salesianos.triana.dam.TrianaTourist.dto.RouteDto.CreatedRouteToPOI;
 import com.salesianos.triana.dam.TrianaTourist.dto.RouteDto.GetRouteDto;
 import com.salesianos.triana.dam.TrianaTourist.errors.excepciones.ListNotFoundException;
 import com.salesianos.triana.dam.TrianaTourist.errors.excepciones.SingleNotFoundException;
@@ -29,10 +30,9 @@ public class RouteService {
     }
 
  */
-    public boolean comprobarPuntoDeInteres(POI poi){
-        return repository.existsBySteps(poi);
+    public boolean comprobarNombre(String nombre){
+        return repository.existsByName(nombre);
     }
-
 
 
     public List<GetRouteDto> findAll(){
@@ -53,12 +53,28 @@ public class RouteService {
     }
 
     public Route save (CreatedRouteDto routeDto){
+
         return  repository.save(conveterRoute.createdRoute(routeDto));
+    }
+
+    public GetRouteDto addPoiToRoute (CreatedRouteToPOI dto, @PathVariable Long id){
+        Route ruta = repository.findById(id)
+                .orElseThrow(() -> new SingleNotFoundException(id.toString(), Route.class));
+
+        POI creado= poiRepository.findPOIToName(dto.getNombrePOI());
+
+        if(creado == null)
+            throw new SingleNotFoundException("Nulo", POI.class);
+
+        ruta.getSteps().add(creado);
+
+        repository.save(ruta);
+        return conveterRoute.getRouteDto(ruta);
     }
 
     public Route editar (CreatedRouteDto editado, @PathVariable Long id){
         return repository.findById(id).map(e -> {
-            e.setName(editado.getName());
+            e.setName(editado.getNombre());
             //e.setSteps(poiRepository.findPOIToRoute(editado.getSteps()));
             e.setSteps(editado.getSteps());
             return  repository.save(e);
@@ -70,6 +86,21 @@ public class RouteService {
         Route route = repository.findById(id)
                 .orElseThrow(() -> new SingleNotFoundException(id.toString(), Route.class));
         repository.delete(route);
+    }
+
+    public void deletePOIToRoute (@PathVariable Long id1, @PathVariable Long id2){
+        Route route = repository.findById(id1)
+                .orElseThrow(() -> new SingleNotFoundException(id1.toString(), Route.class));
+
+        POI poi = poiRepository.findById(id2)
+                .orElseThrow(() -> new SingleNotFoundException(id2.toString(), POI.class));
+
+        route.getSteps().forEach(POI ->{
+            poiRepository.findById(id2)
+                    .orElseThrow(() -> new SingleNotFoundException(id2.toString(), POI.class));
+        });
+        route.getSteps().remove(poi);
+        repository.save(route);
     }
 
 }

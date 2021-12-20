@@ -22,7 +22,7 @@ public class ConveterRoute {
     public Route createdRoute (CreatedRouteDto c){
 
         Route result = Route.builder()
-                .name(c.getName())
+                .name(c.getNombre())
                 .steps(c.getSteps())
                 .build();
         /*

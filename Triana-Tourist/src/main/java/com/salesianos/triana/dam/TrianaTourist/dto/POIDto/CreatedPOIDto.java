@@ -1,27 +1,30 @@
 package com.salesianos.triana.dam.TrianaTourist.dto.POIDto;
 
+import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.ExitCategory;
+import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.UniqueLocationPOI;
 import com.salesianos.triana.dam.TrianaTourist.validation.anotations.poi.UniquePhoto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Builder
 @Data
-@AllArgsConstructor
-@UniquePhoto (fotoPrincipal = "coverPhoto", foto2 = "photo2", foto3 = "photo3", message = "{poi.photos.unique}")
+@AllArgsConstructor @NoArgsConstructor
+@UniquePhoto (fotoPrincipal = "coverPhoto", foto2 = "photo2", foto3 = "photo3", message = "Las fotos deben ser diferentes")
 public class CreatedPOIDto {
 
     @NotBlank( message = "{poi.name.notBlank}")
     private String nombre;
 
+    @UniqueLocationPOI ( message = "{poi.location.unique}")
     @Pattern (regexp = "^([-+]?\\d{1,2}[.]\\d+),\\s*([-+]?\\d{1,3}[.]\\d+)$", message = "{poi.location.ex}")
     private String location;
 
@@ -31,7 +34,7 @@ public class CreatedPOIDto {
     //@Past ()
     private Date fundacion;
 
-    //Categoria debe ser existente
+    @ExitCategory (message = "{poi.nameCat.exitName}")
     @Builder.Default
     private String nombreCategoria = "Sin categoria";
 

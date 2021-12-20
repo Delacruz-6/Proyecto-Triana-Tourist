@@ -30,13 +30,16 @@ public class CategoryService {
     }
 
     public List<POI> POITocategoria (String nombre){
+        comprobarCategoria(nombre);
         return poiRespository.categoriaToPOI(nombre);
     }
 
     public Category categoriaToNombre (String nombre){
         return catRepository.findByNameContains(nombre);
     }
+
     public Optional<Category> findCategoriaToPoi (String nombre){
+        comprobarCategoria(nombre);
         return catRepository.findCategoriaPOIToNombre(nombre);
     }
 
@@ -63,7 +66,7 @@ public class CategoryService {
 
     public Category editar (CreatedCategoryDto editado, @PathVariable Long id){
         return catRepository.findById(id).map(e -> {
-            e.setName(editado.getName());
+            e.setName(editado.getNombre());
             return  catRepository.save(e);
         }).orElseThrow(() -> new SingleNotFoundException(id.toString(), Category.class)
         );
@@ -76,6 +79,10 @@ public class CategoryService {
     }
 
 
+    public void comprobarCategoria (String nombre){
+        Optional <Category> category= catRepository.findCategoriaPOIToNombre(nombre);
+        category.orElseThrow(() -> new SingleNotFoundException("Nulo", Category.class));
+    }
 
 
 

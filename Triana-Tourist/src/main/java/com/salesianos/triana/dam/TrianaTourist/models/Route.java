@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Setter
 public class Route {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
