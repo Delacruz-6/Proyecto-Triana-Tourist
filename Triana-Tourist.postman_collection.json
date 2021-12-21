@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8cab2979-72f9-430d-ad43-b22a0ab56489",
+		"_postman_id": "ac3ba248-7d2e-481a-a420-81552eb863f0",
 		"name": "Triana-Tourist",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -52,14 +52,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/categoria/2",
+							"raw": "localhost:8080/categoria/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"categoria",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -190,7 +190,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Ruta del bacalai\",\r\n    \"steps\" :[\r\n        {\r\n    \"id\": 1,\r\n    \"name\": \"Giralda\",\r\n    \"location\": \"37.3861826,-5.994802998\",\r\n    \"description\": \"La giralda de Sevilla. La Giralda es la torre campanario de la Catedral. En su día fue la torre más alta del mundo con sus 97,5 m de altura, además de ser una de las imágenes más famosas de la ciudad y de toda Andalucía\",\r\n    \"date\": \"1172-09-29T00:00:00.000+00:00\",\r\n    \"category\": {\r\n        \"id\": 1,\r\n        \"name\": \"Historico\"\r\n    },\r\n    \"coverPhoto\": \"https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/catedral-y-giralda-en-sevilla.jpg?itok=SrBFrb5Q\",\r\n    \"photo2\": \"https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/04/la-giralda-de-sevilla.jpg\",\r\n    \"photo3\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/La_Giralda_August_2012_Seville_Spain.jpg/240px-La_Giralda_August_2012_Seville_Spain.jpg\"\r\n}\r\n    ]\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Ruta del bacalao\",\r\n    \"steps\" :[\r\n        {\r\n    \"id\": 2,\r\n    \"name\": \"Giralda\",\r\n    \"location\": \"37.3861826,-5.994802998\",\r\n    \"description\": \"La giralda de Sevilla. La Giralda es la torre campanario de la Catedral. En su día fue la torre más alta del mundo con sus 97,5 m de altura, además de ser una de las imágenes más famosas de la ciudad y de toda Andalucía\",\r\n    \"date\": \"1172-09-29T00:00:00.000+00:00\",\r\n    \"category\": {\r\n        \"id\": 1,\r\n        \"name\": \"Historico\"\r\n    },\r\n    \"coverPhoto\": \"https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/catedral-y-giralda-en-sevilla.jpg?itok=SrBFrb5Q\",\r\n    \"photo2\": \"https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/04/la-giralda-de-sevilla.jpg\",\r\n    \"photo3\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/La_Giralda_August_2012_Seville_Spain.jpg/240px-La_Giralda_August_2012_Seville_Spain.jpg\"\r\n}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -218,7 +218,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Ruta del bacalao\",\r\n    \"steps\": [\"Giralda\"]\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Ruta del salmonete\",\r\n    \"steps\" :[\r\n        {\r\n    \"id\": 2,\r\n    \"name\": \"Giralda\",\r\n    \"location\": \"37.3861826,-5.994802998\",\r\n    \"description\": \"La giralda de Sevilla. La Giralda es la torre campanario de la Catedral. En su día fue la torre más alta del mundo con sus 97,5 m de altura, además de ser una de las imágenes más famosas de la ciudad y de toda Andalucía\",\r\n    \"date\": \"1172-09-29T00:00:00.000+00:00\",\r\n    \"category\": {\r\n        \"id\": 1,\r\n        \"name\": \"Historico\"\r\n    },\r\n    \"coverPhoto\": \"https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/catedral-y-giralda-en-sevilla.jpg?itok=SrBFrb5Q\",\r\n    \"photo2\": \"https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/04/la-giralda-de-sevilla.jpg\",\r\n    \"photo3\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/La_Giralda_August_2012_Seville_Spain.jpg/240px-La_Giralda_August_2012_Seville_Spain.jpg\"\r\n}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -226,14 +226,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/ruta/",
+							"raw": "localhost:8080/ruta/3",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"ruta",
-								""
+								"3"
 							]
 						}
 					},
@@ -254,14 +254,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/ruta/3/poi/",
+							"raw": "localhost:8080/ruta/1/poi/",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"ruta",
-								"3",
+								"1",
 								"poi",
 								""
 							]
@@ -359,7 +359,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Giraldi\",\r\n    \"location\": \"37.3861826,-5.994802998\",\r\n    \"descripcion\": \"La giralda de Sevilla. La Giralda es la torre campanario de la Catedral. En su día fue la torre más alta del mundo con sus 97,5 m de altura, además de ser una de las imágenes más famosas de la ciudad y de toda Andalucía\",\r\n    \"fundacion\": \"1172-09-29\",\r\n    \"idCategoria\": 1,\r\n    \"coverPhoto\": \"https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/catedral-y-giralda-en-sevilla.jpg?itok=SrBFrb5Q\",\r\n    \"photo2\": \"https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/catedral-y-giralda-en-sevilla.jpg?itok=SrBFrb5Q\",\r\n    \"photo3\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/La_Giralda_August_2012_Seville_Spain.jpg/240px-La_Giralda_August_2012_Seville_Spain.jpg\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Giralda\",\r\n    \"location\": \"37.3861826,-5.994802998\",\r\n    \"descripcion\": \"La giralda de Sevilla. La Giralda es la torre campanario de la Catedral. En su día fue la torre más alta del mundo con sus 97,5 m de altura, además de ser una de las imágenes más famosas de la ciudad y de toda Andalucía\",\r\n    \"fundacion\": \"1172-09-29\",\r\n    \"idCategoria\": 1,\r\n    \"coverPhoto\": \"https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/catedral-y-giralda-en-sevilla.jpg?itok=SrBFrb5Q\",\r\n    \"photo2\": \"https://sevillaenred.com/wp-content/uploads/2019/11/vista-nocturna-de-la-giralda-en-sevilla.jpg\",\r\n    \"photo3\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/La_Giralda_August_2012_Seville_Spain.jpg/240px-La_Giralda_August_2012_Seville_Spain.jpg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

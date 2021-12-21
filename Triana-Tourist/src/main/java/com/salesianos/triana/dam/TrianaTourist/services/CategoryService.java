@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,7 +40,11 @@ public class CategoryService {
         }else {
 
             return data.stream()
-                    .map(converterCategory::getCategoryDto)
+                    .map(c -> GetCategoryDto.builder()
+                           .id(c.getId())
+                           .name(c.getName())
+                           .namePOIs(poiRepository.findCategoryPOIName(c.getId()))
+                           .build())
                     .collect(Collectors.toList());
         }
     }

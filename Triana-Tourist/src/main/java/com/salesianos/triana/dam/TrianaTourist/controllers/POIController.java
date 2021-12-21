@@ -3,11 +3,7 @@ package com.salesianos.triana.dam.TrianaTourist.controllers;
 
 import com.salesianos.triana.dam.TrianaTourist.dto.POIDto.CreatedPOIDto;
 import com.salesianos.triana.dam.TrianaTourist.dto.POIDto.GetPOIDto;
-import com.salesianos.triana.dam.TrianaTourist.dto.CategoryDto.CreatedCategoryDto;
-import com.salesianos.triana.dam.TrianaTourist.dto.CategoryDto.GetCategoryDto;
-import com.salesianos.triana.dam.TrianaTourist.models.Category;
 import com.salesianos.triana.dam.TrianaTourist.models.POI;
-import com.salesianos.triana.dam.TrianaTourist.services.CategoryService;
 import com.salesianos.triana.dam.TrianaTourist.services.POIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

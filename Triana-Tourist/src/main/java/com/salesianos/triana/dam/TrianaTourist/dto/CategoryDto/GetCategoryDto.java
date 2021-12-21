@@ -17,5 +17,5 @@ public class GetCategoryDto {
     private String name;
 
     @Builder.Default
-    private List<POI> puntosInteres= new ArrayList<>();
+    private List<String> namePOIs= new ArrayList<>();
 }

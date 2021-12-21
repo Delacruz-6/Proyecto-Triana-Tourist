@@ -13,7 +13,8 @@ import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 @Builder
 @Data
@@ -31,8 +32,7 @@ public class CreatedPOIDto {
     @Lob
     private String descripcion;
 
-    //@Past ()
-    private Date fundacion;
+    private LocalDate fundacion;
 
     @ExitCategory (message = "{poi.nameCat.exitName}")
     private Long idCategoria;

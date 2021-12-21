@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 @Builder
 @Data
@@ -15,7 +16,7 @@ public class GetPOIDto {
 
     private String name,location, description;
 
-    private Date fundacion;
+    private LocalDate fundacion;
 
     private Long category;
 

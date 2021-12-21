@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecificationExecutor<POI> {
 
@@ -15,9 +14,16 @@ public interface POIRepository extends JpaRepository<POI,Long>, JpaSpecification
 
 
     @Query(value = """
-            SELECT p.name
-            FROM  POI p LEFT JOIN p.CATEGORIA c
-            WHERE c.id = :id
+             SELECT p.name
+             FROM  POI p
+             WHERE p.CATEGORIA =:id
+            """, nativeQuery = true)
+    List<String> findCategoryPOIName(@Param("id") Long id);
+
+    @Query(value = """
+             SELECT p.*
+             FROM  POI p
+             WHERE p.CATEGORIA =:id
             """, nativeQuery = true)
     List<POI> findCategoryPOI(@Param("id") Long id);
 

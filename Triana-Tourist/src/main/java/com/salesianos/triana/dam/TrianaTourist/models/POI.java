@@ -1,11 +1,14 @@
 package com.salesianos.triana.dam.TrianaTourist.models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +24,8 @@ public class POI {
 
     private String name,location, description;
 
-    private Date date;
+    @JsonFormat (pattern="yyyy-MM-dd")
+    private LocalDate date;
 
 
     @ManyToOne

@@ -9,20 +9,6 @@ import java.util.Optional;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> , JpaSpecificationExecutor<Category> {
 
-
-
-    //Traer la categoria que tenga el POI con el nombre de dicha categoria
-    @Query ("""
-            select c
-            from POI p LEFT JOIN p.category c
-            where c.name = :nombre
-            """)
-    Optional<Category> findCategoriaPOIToNombre(@Param ("nombre") String nombre);
-
-    Category findByNameContains(@Param("nombre") String nombre);
-
-
-
     boolean existsByName(String nombre);
 
     boolean existsById(Long id);
